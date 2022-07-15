@@ -1,0 +1,7 @@
+EM:
+
+java -jar ../../diCal2.jar --paramFile mutRec.param --vcfFile contig.0.vcf --vcfFilterPassString PASS --vcfReferenceFile output.ref --lociPerHmmStep 1000 --configFile clean_split.config --demoFile clean_split.demo --intervalType loguniform --compositeLikelihood lol --intervalParams '8,0.01,4' --startPoint '0.2,0.5,0.5,1' --bounds '0.002,20;0.01,20;0.01,20;0.01,20' --numberIterationsEM 10 --numberIterationsMstep 5 --seed 4711 --verbose
+
+GENETIC ALGORITHM:
+
+java -jar ../../diCal2.jar --paramFile mutRec.param --vcfFile contig.0.vcf --vcfFilterPassString PASS --vcfReferenceFile output.ref --lociPerHmmStep 1000 --configFile clean_split.config --demoFile clean_split.demo --intervalType loguniform --intervalParams '8,0.01,4' --compositeLikelihood lol --metaStartFile clean_split.start --bounds '0.002,20;0.01,20;0.01,20;0.01,20' --numberIterationsEM 4 --numberIterationsMstep 2 --metaNumIterations 3 --metaKeepBest 2 --metaNumPoints 5 --seed 4711 --verbose

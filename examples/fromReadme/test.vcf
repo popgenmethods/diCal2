@@ -1,0 +1,5 @@
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	IND1	IND2	IND3	IND4
+1	5	.	T	.	36	.	.	GT	./.	./.	./.	./.
+1	7	.	G	T	58	.	.	GT	0|1	1/1	1|0	0/0
+1	8	.	G	A	98	.	.	GT	0|1	1|1	1|1	0|0
+1	15	.	A	.	72	.	.	GT	0/0	0/0	0/0	0/0

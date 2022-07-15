@@ -1,0 +1,332 @@
+{NORMAL}
+
+
+{NORMAL_REQUIRED}
+
+  [--help]
+        Prints this help message.
+
+# either one of these two
+# why would config file need number of alleles?
+# try whether we can remove it
+  [(-c|--configFile) <configFile>]
+        The input configuration file. Tells you meta parameter and which
+        sequences go into which demes.
+
+  [(-n|--numPerDeme) <numPerDeme>]
+        The number of individuals per deme. e.g. 5,3,2 means the first 5
+        haplotypes are in deme 0, the next 3 are in deme 1, and the next 2 are
+        in deme 2.
+
+  [--vcfFile <vcfFile>]
+        The sequence file. Just a bunch of sequences. In vcf format.
+
+  [--compositeLikelihood <compositeLikelihood>]
+        The composite likelihood type (LOL, PAC, SuperPAC, PCL, PCLOL, or FILE).
+
+  (-p|--paramFile) <paramFile>
+        The input parameter file.
+
+# maybe break instead of ignoring
+# ignoring is ok
+  [--vcfDiAllelic]
+        If this switch is set, the vcf file is represented with two alleles
+        internally. Sites with more then two alleles are ignored.
+
+# maybe break instead of ignoring
+# ignoring is ok
+  [--vcfTriAllelic]
+        If this switch is set, the vcf file is represented with three alleles
+        internally. Sites with more then three alleles are ignored.
+
+# hmm, I guess we need this
+  [--vcfFilterPassString <vcfFilterPassString>]
+        The String in the FILTER column of a vcf-file that marks a snp as having
+        passed the filters. ALL OTHER SITES ARE IGNORED
+
+# also good to have
+  [--vcfOffset <vcfOffset>]
+        Offset(s) to shift the positions given in the vcf file(s).
+
+  [--demoFile <demoFile>]
+        The demography parameter file.
+
+  [--bounds <bounds>]
+        A string of semi-colon separated list of pairs of doubles, each pair
+        spearated by a comma. This list gives the bounds for the parameters
+        during the EM-estimation.
+
+# how to deal with when not needed?
+  [--ratesFile <ratesFile>]
+        The file with the exponential growth rates. Has to kind of match the
+        demogrpahy file.
+
+# good
+  [--lociPerHmmStep <lociPerHmmStep>]
+        If this flag is used with k > 1, then each HMM-step consists of k loci,
+        and we assume there are no recombinations within blocks of k loci. Not
+        compatible with locus skipping. (default: 1)
+
+# i would say make logUniform default, but it needs parameters
+# see what the options are, and then maybe make a default
+# make some of these required.
+  [--intervalType <intervalType>]
+        The method for creating the intervals.
+        [single,simple,meanrate,mixtureuniform,old]
+
+  [--intervalParams <intervalParams>]
+        The parameters for generating the intervals. [single=<none>,
+        simple=<none>, meanrate=<numIntervals>, mixtureuniform=<numIntervals>,
+        old=<numIntervals>] (default: )
+
+  [--printIntervals]
+        If this switch is set, the intervals used are printed.
+
+# highlight EXCLUDED
+  [--bedFile <bedFile>]
+        Include *.bed file(s) that lists all regions of the chromosome that
+        should be excluded from analysis
+
+
+
+
+
+
+
+
+
+
+  [--metaStartFile <metaStartFile>]
+        A file containing the start points to be used in tab-separated format.
+
+  [--metaNumStartPoints <metaNumStartPoints>]
+        The number of starting points (in each dimension if we have a grid).
+
+  [--metaNumIterations <metaNumIterations>]
+        The number of meta optimization steps for the gentic algorithm.
+        (default: 1)
+
+  [--metaParallelEmSteps <metaParallelEmSteps>]
+        Number of EM steps to be exectued in parallel during gentic algorithm.
+        (default: 1)
+
+  [--metaKeepBest <metaKeepBest>]
+        Number of best points to keep after a meta step.
+
+  [--metaNumPoints <metaNumPoints>]
+        Number of points to be used in each meta iteration.
+
+  [--metaGridStart]
+        If flag is set we start with a grid of points, otherwise the start
+        points are chosen randomly.
+
+
+
+
+
+
+  [-v|--verbose]
+        Verbose for the EM procedure.
+
+# make sure it's only required when actual randomness involved
+  --seed <seed>
+        The seed to initialize the randomness.
+
+  [--numPermutations <numPermutations>]
+        Number of permutations to use for PAC-like methods.
+
+  [--numCsdsPerPerm <numCsdsPerPerm>]
+        Number of CSDs used for each permutation.
+
+  [--diffPermsPerChunk]
+        If this switch is set, use different set of permutations for each
+        independent chunk.
+
+  [--permutationsFile <permutationsFile>]
+        Specfiy file(s) containing a list of permutations to be used to analyze
+        each chunk respectively.
+
+  [--startPoint <startPoint>]
+        The starting point for the EM.
+
+  [--numberIterationsEM <numberIterationsEM>]
+        EM terminates after the given number of iterations.
+
+  [--numberIterationsMstep <numberIterationsMstep>]
+        M-step search terminates after given number of iterations
+
+  [--parallel <parallel>]
+        Specifies number of parallel threads
+
+  [--printEmPath]
+        If this switch is set, we print the parameter values at each EM step.
+
+# make this default
+  [--coordinateWiseMStep]
+        Do a coordinatewise M Step optimization. The number of iterations and
+        the reletive error thresholds are applied coordinatewise
+
+# here is hidden randomness, not nice
+  [--coordinateOrder <coordinateOrder>]
+        Order to update parameters for coordinateWiseMStep. If not specified,
+        use random order.
+
+{HIDDEN}
+
+
+
+# leave it
+   [(-s|--sequenceFile) <sequenceFile>]
+        The sequence file. Just a bunch of sequences.
+
+# leave it
+  [--unCompressedSequence]
+        If this switch is set, the sequence file is uncompressed and contains
+        full haplotypes.
+
+# these have to do with non-VCF
+ [--alleles <alleles>]
+        A comma separated string of alleles, e.g. 'A,C,G,T'.
+
+# these have to do with non-VCF
+  [--missingAlleles <missingAlleles>]
+        A comma separated string of the alleles that are interpreted as missing,
+        e.g. 'N,T,S'.
+
+# dont even know whether this works
+  [--stationaryForPartiallyMissing]
+        If this switch is set, the partially missing sites are not ignored, but
+        the stationary distribution is used for them. Kinda only works with the
+        multilocus hmm version.
+
+# make this standard and a hidden modifier to not do this
+  [--renormalizeMutationMatrix]
+        If this switch is set, we renormalize the mutation matrix so rows sum to
+        1
+
+# not really sure what this one does
+  [--makeUniformMutationMatrix]
+        If this switch is set, we use a uniform mutation matrix instead of the
+        given one, and adjust the mutation rate accordingly.
+
+# make a good default (0.005)
+  [--minimalMigration <minimalMigration>]
+        If this factor is given, you can always migrate anywhere with a minial
+        rate of min(theta,rho)*<factor>. (Except the rates you estimate)
+
+# leave it
+  [--useLocusSkipping]
+        If this switch is set, we use the locus-skipping speedup (requires
+        uniform PIM mutations)
+
+# leave it
+  [--ancientDemeStates]
+        If this switch is set, the diCal hidden states are a triplet (epoch,
+        ancientDeme, haplotype).
+
+# make migratingEthan default
+  --trunkStyle <trunkStyle>
+        The style of trunk. [simple,oldCake,meanCake,multiCake]
+
+
+# make a good default, probably 'average'
+  [--cakeStyle <cakeStyle>]
+        Where in the interval to get the cake factor
+        [beginning,middle,end,average] (default: null)
+
+# what even
+  [--printLoci <printLoci>]
+        If this flag is specified with an integer k, additionally decodes at
+        every k loci, so that we can print at them.
+
+  [--printSnps]
+        Print at the SNPs as well.
+
+# w00t?
+  [--addTrunkIntervals <addTrunkIntervals>]
+        Number of trunk intervals to add. (default: 0)
+
+  [--oldCakeRenormalizeSettings]
+        Use old cake intervals and don't renormalize
+
+  [--oldCompressedDataFormat]
+        In old data format, the compressed sequence file didn't know how many
+        total loci there were, and this info was gotten from the config file.
+
+# make a good default, probably 0.2
+  [--nmFraction <nmFraction>]
+        The initial stepsize of the nelder mead optimizer is this fraction of
+        the starting point.
+
+# just leave it
+  [--condOnTransitionType]
+        If this switch is set, we condition on the type of transition
+        (recombination or no recombination).
+
+  [--marginalKL]
+        If this switch is set, instead of using EM objective function, we use KL
+        divergence to average marginal posterior decoding.
+
+
+
+
+
+
+
+
+
+# too complicated
+  [--metaStretchProportion <metaStretchProportion>]
+        Probability that a new point is chosen in a ridge-like manner, as
+        opposed to each dimension independently. (default: 0.25)
+
+  [--metaDisperseFactor <metaDisperseFactor>]
+        SD for new Gaussian points is multiplied by this factor. (default: 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  [--estimateRecomScaling]
+        If this switch is set, the EM will estimate a scaling factor for the
+        recombination rate, so inputRecomRate * scaling = recomRate.
+
+  [--estimateTheta]
+        If this switch is set, the EM will estimate theta for each interval
+
+  [--thetaIntervals <thetaIntervals>]
+        factory type by which to build the theta intervals, recommend
+        customFixed
+
+  [--thetaIntervalParams <thetaIntervalParams>]
+        params for the thetaIntervals factory.
+
+# these didn't work anyways
+  [--relativeErrorM <relativeErrorM>]
+        M-step optimization terminates if relative improvement is less then the
+        given value.
+
+  [--relativeErrorE <relativeErrorE>]
+        EM optimization terminates if relative likelihood improvement is less
+        then the given value.
+
+  [--useParamRelErr]
+        If this switch is set, we use the relative error of the parameters
+        (instead of log-likelihood) as stopping criteria of E-step.
+
+  [--useParamRelErrM]
+        If this switch is set, we use the relative error of parameters (instead
+        of log-likelihood) as stopping criteria for M-step.
+
+
+
+
