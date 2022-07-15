@@ -184,7 +184,7 @@ The following libraries (jar-files) are required. Put the jar-files (or symbolic
 
 ### CONTACT:
 
-Please contact steinruecken@uchicago.edu with bugs, comments, or questions regarding the software.
+Please contact steinrue@uchicago.edu with bugs, comments, or questions regarding the software.
 
 ### VERSION HISTORY:
 
