@@ -2,3 +2,12 @@
 .classpath
 .project
 .settings/org.eclipse.jdt.core.prefs
+manual/manual.aux
+manual/manual.bbl
+manual/manual.blg
+manual/manual.fdb_latexmk
+manual/manual.fls
+manual/manual.log
+manual/manual.out
+manual/manual.synctex.gz
+manual/manual.toc
